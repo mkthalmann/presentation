@@ -1,0 +1,501 @@
+%!TEX program = xelatex
+\documentclass[10pt,ignorenonframetext,,aspectratio=149]{beamer}
+\usetheme{metropolis}
+\usefonttheme{serif} % use mainfont rather than sansfont for slide text
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \else % if luatex or xelatex
+  \ifxetex
+    \usepackage{unicode-math}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+    \setmainfont[Scale=MatchLowercase,]{Roboto Condensed}
+      \setsansfont[Scale=MatchLowercase,]{Roboto Condensed}
+      \setmonofont[Mapping=tex-ansi,Scale=MatchLowercase]{Roboto Mono}
+      \setmathfont{Asana Math}
+  \fi
+% use upquote if available, for straight quotes in verbatim environments
+\usepackage{upquote}
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath}
+\usepackage[
+  backend=biber,
+  bibstyle=biblatex-sp-unified,
+  citestyle=sp-authoryear-comp,
+  maxcitenames=3,
+  maxbibnames=99,
+  url=false
+]{biblatex}
+\addbibresource{../bibliographyuni.bib}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{35,38,41}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.58,0.85,0.30}{\textbf{\colorbox[rgb]{0.30,0.12,0.14}{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.25,0.50,0.35}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.48,0.49,0.49}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.55,0.55}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{\textbf{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.99,0.74,0.29}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.64,0.20,0.25}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{\underline{#1}}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.60,1.00}{\textbf{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.96,0.45,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.56,0.27,0.68}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.77,0.36,0.00}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.81,0.76}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.15,0.68,0.38}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.16,0.50,0.73}{\colorbox[rgb]{0.08,0.19,0.26}{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.24,0.68,0.91}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.96,0.31,0.31}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.15,0.68,0.68}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.85,0.27,0.33}{#1}}
+
+% Comment these out if you don't want a slide with just the
+% part/section/subsection/subsubsection title:
+\AtBeginPart{
+  \let\insertpartnumber\relax
+  \let\partname\relax
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \let\insertsectionnumber\relax
+  \let\sectionname\relax
+  \frame{\sectionpage}
+}
+\AtBeginSubsection{
+  \let\insertsubsectionnumber\relax
+  \let\subsectionname\relax
+  \frame{\subsectionpage}
+}
+
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+
+\title{An Example R Markdown Document}
+\subtitle{(A Subtitle Would Go Here if This Were a Class)}
+\author{Maik Thalmann}
+\date{Where, 10 April, 2020}
+
+%% Here's everything I added.
+%%--------------------------
+
+\usepackage{ltablex}
+\usepackage{booktabs}
+\renewcommand{\arraystretch}{1.03}
+\newcolumntype{L}{>{\scriptsize}l}
+
+% colors
+\usepackage{tikz}
+\definecolor{mygreen}{RGB}{159, 214, 223} % 0, 19, 108
+\definecolor{myred}{RGB}{252, 127, 178} %        96, 106, 179;
+\definecolor{background-color}{RGB}{40, 40, 40} % #48525c
+\newcommand*{\mygreen}[1]{\textcolor{mygreen}{\textbf{#1}}}
+\newcommand*{\myred}[1]{\textcolor{myred}{\textbf{#1}}}
+
+% set up tikz
+\usepackage{tikz-qtree}
+\def\mysize{\footnotesize}
+\usetikzlibrary{decorations.text,backgrounds,arrows.meta,decorations.pathreplacing,calc, fit, shapes,positioning,intersections,decorations.markings}
+\tikzset{
+  font=\color{white},
+  every tree node/.style={align=center,anchor=base},
+  edge from parent/.append style={ultra thin, white}}
+\tikzset{semtree/.style={
+      level distance=2em,
+      every tree node/.style={font=\bfseries}}
+}
+
+\usepackage{rotating}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks  = true,
+  urlcolor    = mygreen,
+  linkcolor   = mygreen,
+  citecolor   = mygreen,
+  pdfauthor   = {Maik Thalmann},
+  pdfproducer = {XeLaTeX},
+  pdfsubject  = {Linguistics; University of Göttingen},
+}
+
+% packages necessary for the semantics
+\usepackage{latexsym}
+\usepackage{mathtools}
+\usepackage[cal=esstix]{mathalfa}
+\usepackage{upgreek}
+\usepackage{wasysym}
+\usepackage{stmaryrd}
+\usepackage{soul}
+\newcommand{\sem}[1]{\mbox{$\llbracket$\sffamily\textbf{#1}$\rrbracket$}}
+
+\usepackage{relsize}
+\usepackage[framemethod=tikz]{mdframed}
+% custom rule environment
+\newmdenv[
+  linecolor=mygreen,
+  linewidth=2pt,
+  topline=false,
+  bottomline=false,
+  rightmargin=0,
+  leftmargin=0,
+  innerrightmargin=5pt,
+  innerleftmargin=5pt
+]{rulebox}
+% custom quotation environment
+\newmdenv[
+  linecolor=mygreen,
+  backgroundcolor=background-color!20,
+  linewidth=4pt,
+  font=\smaller,
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  innerrightmargin=5pt,
+  innerleftmargin=5pt
+]{quotebox}
+
+
+% Get rid of navigation symbols.
+%-------------------------------
+\setbeamertemplate{navigation symbols}{}
+
+% Optional institute tags and titlegraphic.
+% Do feel free to change the titlegraphic if you don't want it as a Markdown field.
+%----------------------------------------------------------------------------------
+\institute{Georg-August-University Göttingen}
+
+% \titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~/Dropbox/teaching/clemson-academic.png}} % <-- if you want to know what this looks like without it as a Markdown field. 
+% -----------------------------------------------------------------------------------------------------
+
+
+% Some beamer adjustments
+%----------------------------------------
+\setbeamertemplate{title page}[empty]
+\setbeamertemplate{bibliography item}{}
+\setbeamertemplate{itemize item}{\color{white}$\bullet$}
+\setbeamertemplate{itemize subitem}{\color{white}\scriptsize{$\bullet$}}
+\setbeamertemplate{itemize/enumerate body end}{\vspace{.6\baselineskip}}
+\setbeamercovered{transparent}
+\setbeamercolor{background canvas}{bg=background-color}
+\setbeamercolor{frametitle}{fg=mygreen, bg=background-color}
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{normal text}{fg=white}
+\setbeamercolor{alerted text}{fg=myred}
+\setbeamercolor{local structure}{fg=white}
+\setbeamercolor{section in toc}{fg=mygreen}
+\setbeamercolor{structure}{fg=white}
+\setbeamercolor{local structure}{parent=structure}
+\setbeamercolor{item projected}{parent=item,use=item,fg=white}
+\setbeamercolor{enumerate item}{parent=item}
+\setbeamercolor{footline}{fg=mygreen}
+\setbeamercolor{block title}{fg=myred,bg=white}
+\setbeamercolor{bibliography entry author}{fg=white}
+\setbeamercolor{bibliography entry location}{fg=white}
+\setbeamercolor{bibliography entry title}{fg=white}
+\setbeamercolor{bibliography entry note}{fg=white}
+\setbeamercolor{bibliography entry item}{fg=white}
+\setbeamerfont{frametitle}{size=\LARGE}
+
+% Sections and subsections should not get their own damn slide.
+%--------------------------------------------------------------
+% \AtBeginPart{}
+% \AtBeginSection{}
+\AtBeginSubsection{}
+\AtBeginSubsubsection{}
+
+% Suppress some of Markdown's weird default vertical spacing.
+%------------------------------------------------------------
+\setlength{\emergencystretch}{0em}  % prevent overfull lines
+\setlength{\parskip}{0pt}
+
+
+% Allow for those simple two-tone footlines I like. 
+% Edit the colors as you see fit.
+%--------------------------------------------------
+\defbeamertemplate*{footline}{my footline}{%
+  \ifnum\insertpagenumber=1
+    \hbox{%
+      \begin{beamercolorbox}[wd=\paperwidth,ht=.8ex,dp=1ex,center]{}%
+        % empty environment to raise height
+      \end{beamercolorbox}%
+    }%
+    \vskip0pt%
+  \else%
+    \scriptsize{%
+      \hspace*{0.1cm}\url{https://mkthalmann.github.io/home/}\hfill%
+      \vspace*{1pt}%
+      \insertframenumber/\inserttotalframenumber \hspace*{0.1cm}%
+      \newline%
+      \color{mygreen}{\rule{\paperwidth}{0.4mm}}\newline%
+      \color{myred}{\rule{\paperwidth}{.4mm}}%
+    }%
+  \fi%
+}
+
+\usepackage{gb4e}
+
+% Automatically center images
+% ---------------------------
+% Note: this is for ![](image.png) images
+% Use "fig.align = "center" for R chunks
+\usepackage{etoolbox}
+
+\AtBeginDocument{%
+  \letcs\oig{@orig\string\includegraphics}%
+  \renewcommand<>\includegraphics[2][]{%
+    \only#3{%
+      {\centering\oig[{#1}]{#2}\par}%
+    }%
+  }%
+}
+
+\AtBeginEnvironment{Shaded}{\smaller}
+
+% I think I've moved to xelatex now. Here's some stuff for that.
+% --------------------------------------------------------------
+% I could customize/generalize this more but the truth is it works for my circumstances.
+
+\ifxetex
+  \setbeamerfont{title}{family=\fontspec{Roboto Slab Light}}
+  \setbeamerfont{frametitle}{family=\fontspec{Roboto Slab Light}}
+  \usepackage[font=small,skip=0pt]{caption}
+\else
+\fi
+
+% Okay, and begin the actual document...
+
+\begin{document}
+\frame{\titlepage}
+
+\hypertarget{pop-songs-and-political-science}{%
+\section{Pop Songs and Political
+Science}\label{pop-songs-and-political-science}}
+
+\begin{frame}{Sheena Easton and Game Theory}
+\protect\hypertarget{sheena-easton-and-game-theory}{}
+Sheena Easton describes the following scenario for her baby:
+
+\begin{enumerate}
+\tightlist
+\item
+  Takes the morning train
+\item
+  Works from nine 'til five
+\item
+  Takes another train home again
+\item
+  Finds Sheena Easton waiting for him
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{R Stuff}
+\protect\hypertarget{r-stuff}{}
+\begin{verbatim}
+## # A tibble: 6 x 10
+##   carat cut       color clarity depth table price     x     y     z
+##   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+## 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+## 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+## 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+## 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+## 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+## 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{R Stuff}
+\protect\hypertarget{r-stuff-1}{}
+Some text to compare font sizes on this slide.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(psych)}
+\NormalTok{desc \textless{}{-}}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{describeBy}\NormalTok{(d}\OperatorTok{$}\NormalTok{price, d}\OperatorTok{$}\NormalTok{color, }\DataTypeTok{mat =}\NormalTok{ T, }\DataTypeTok{digits =} \DecValTok{2}\NormalTok{))}
+\KeywordTok{kable}\NormalTok{(desc, }\DataTypeTok{booktabs =}\NormalTok{ T) }\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{kable\_styling}\NormalTok{(}\DataTypeTok{latex\_options =} \StringTok{"scale\_down"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[H]
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}{lllrrrrrrrrrrrrr}
+\toprule
+  & item & group1 & vars & n & mean & sd & median & trimmed & mad & min & max & range & skew & kurtosis & se\\
+\midrule
+X11 & 1 & D & 1 & 6775 & 3169.95 & 3356.59 & 1838.0 & 2457.57 & 1657.55 & 357 & 18693 & 18336 & 2.10 & 4.67 & 40.78\\
+X12 & 2 & E & 1 & 9797 & 3076.75 & 3344.16 & 1739.0 & 2349.98 & 1537.46 & 326 & 18731 & 18405 & 2.17 & 4.89 & 33.79\\
+X13 & 3 & F & 1 & 9542 & 3724.89 & 3784.99 & 2343.5 & 2974.69 & 2274.31 & 342 & 18791 & 18449 & 1.75 & 2.82 & 38.75\\
+X14 & 4 & G & 1 & 11292 & 3999.14 & 4051.10 & 2242.0 & 3245.61 & 2277.27 & 354 & 18818 & 18464 & 1.50 & 1.72 & 38.12\\
+X15 & 5 & H & 1 & 8304 & 4486.67 & 4215.94 & 3460.0 & 3755.13 & 3683.52 & 337 & 18803 & 18466 & 1.38 & 1.45 & 46.26\\
+\addlinespace
+X16 & 6 & I & 1 & 5422 & 5091.87 & 4722.39 & 3730.0 & 4332.86 & 4067.51 & 334 & 18823 & 18489 & 1.16 & 0.42 & 64.13\\
+X17 & 7 & J & 1 & 2808 & 5323.82 & 4438.19 & 4234.0 & 4721.87 & 4088.27 & 335 & 18710 & 18375 & 1.03 & 0.28 & 83.75\\
+\bottomrule
+\end{tabular}}
+\end{table}
+\end{frame}
+
+\begin{frame}{Plot}
+\protect\hypertarget{plot}{}
+\begin{center}\includegraphics[width=0.9\linewidth]{figs/unnamed-chunk-3-1} \end{center}
+\end{frame}
+
+\begin{frame}{Rick Astley's Re-election Platform}
+\protect\hypertarget{rick-astleys-re-election-platform}{}
+Rick Astley's campaign promises:
+
+\begin{itemize}
+\tightlist
+\item
+  Never gonna give you up.
+\item
+  Never gonna let you down.
+\item
+  Never gonna run around and desert you.
+\item
+  Never gonna make you cry.
+\item
+  Never gonna say goodbye.
+\item
+  Never gonna tell a lie and hurt you.
+\end{itemize}
+
+Are these promises (if credible) sufficient to secure re-election?
+\end{frame}
+
+\begin{frame}{Rick Astley and Median Voter Theorem}
+\protect\hypertarget{rick-astley-and-median-voter-theorem}{}
+Whereas these pledges conform to the preferences of the \textbf{median
+voter}, we expect Congressman Astley to secure re-election.
+\end{frame}
+
+\begin{frame}{Caribbean Queen and Operation Urgent Fury}
+\protect\hypertarget{caribbean-queen-and-operation-urgent-fury}{}
+Billy Ocean released ``Caribbean Queen'' in 1984.
+
+\begin{itemize}
+\tightlist
+\item
+  Emphasized sharing the same dream
+\item
+  Hearts beating as one
+\end{itemize}
+
+``Caribbean Queen'' is about the poor execution of Operation Urgent
+Fury.
+
+\begin{itemize}
+\tightlist
+\item
+  Echoed JCS chairman David Jones' frustrations with military
+  establishment.
+\end{itemize}
+
+Billy Ocean is advocating for what became the Goldwater-Nichols Act.
+
+\begin{itemize}
+\tightlist
+\item
+  Wanted to take advantage of \textbf{economies of scale}, resolve
+  \textbf{coordination problems} in U.S. military.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Good Day Hypothesis}
+\protect\hypertarget{the-good-day-hypothesis}{}
+We know the following about Ice Cube's day.
+
+\begin{enumerate}
+\tightlist
+\item
+  The Lakers beat the Supersonics.
+\item
+  No helicopter looked for a murder.
+\item
+  Consumed \alert{Fatburger} at 2 a.m.
+\item
+  Goodyear blimp: ``Ice Cube's a pimp.''
+  \textcite{heimkratzer1998semantics}
+\item
+  \autocites{posner1980semantics,hintikka1969semantics,gries2013statistics,grice1989studies,groenendijkstokhof1984questions}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{The Good Day Hypothesis}
+\protect\hypertarget{the-good-day-hypothesis-1}{}
+\begin{tikzpicture}[baseline=(top.base), scale=.8]
+    \Tree [.\node(top){DP}; [.D der ] [.NP [.AP [.A große ] ] [.N$''''$ [.AP^2 [.A^2 verschüchterte ] ] [.N$'''$ [.AP^3 [.A^3 fliegende ] ] [.N$''$ [.N$'$ [.N Wolf ] ] [.PP [.P aus ] [.NP^2 [.N^2 Twilight ] ] ] ] ] ] ] ]
+\end{tikzpicture}
+
+\begin{quotebox}
+    Colorless green ideas sleep furiously
+\end{quotebox}
+\end{frame}
+
+\begin{frame}{Semantics}
+\protect\hypertarget{semantics}{}
+\begin{exe}
+  \ex Lexikoneinträge
+  
+  \sem{not} = $\lambda p \in D_t$ . $p=0$\\
+    \sem{Carla} = Carla\\
+    \sem{invite} = $\lambda x \in D_e$ . [$\lambda y \in D_e$ . $y$ lädt $x$ ein]\\
+    \sem{a} = $\lambda f \in D_{\langle e, t\rangle}$ . $[\lambda g \in D_{\langle e, t\rangle}$ . es gibt ein $x$, sodass $f(x)=1$ und $g(x)=1]$\\
+    \sem{politician} = $\lambda x \in D_e$ . $x$ ist ein Politiker
+\end{exe}
+\end{frame}
+
+\begin{frame}{The Good Day Hypothesis}
+\protect\hypertarget{the-good-day-hypothesis-2}{}
+This leads to two different hypotheses:
+
+\begin{itemize}
+\tightlist
+\item
+  \(H_0\): Ice Cube's day is statistically indistinguishable from a
+  typical day.
+\item
+  \(H_1\): Ice Cube is having a good (i.e.~greater than average) day.
+\end{itemize}
+
+These hypotheses are tested using archival data of Ice Cube's life.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{}
+  \printbibliography[heading=none]
+\end{frame}
+
+
+\frame{\small \frametitle{Table of Contents}
+  \tableofcontents}
+\end{document}
