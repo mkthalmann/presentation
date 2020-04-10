@@ -104,7 +104,7 @@
 \title{An Example R Markdown Document}
 \subtitle{(A Subtitle Would Go Here if This Were a Class)}
 \author{Maik Thalmann}
-\date{Where, 10 April, 2020}
+\date{Where, 11 April, 2020}
 
 %% Here's everything I added.
 %%--------------------------
@@ -119,6 +119,7 @@
 \definecolor{mygreen}{RGB}{159, 214, 223} % 0, 19, 108
 \definecolor{myred}{RGB}{252, 127, 178} %        96, 106, 179;
 \definecolor{background-color}{RGB}{40, 40, 40} % #48525c
+\definecolor{shadecolor}{RGB}{63, 63, 64}
 \newcommand*{\mygreen}[1]{\textcolor{mygreen}{\textbf{#1}}}
 \newcommand*{\myred}[1]{\textcolor{myred}{\textbf{#1}}}
 
@@ -162,6 +163,8 @@
 % custom rule environment
 \newmdenv[
   linecolor=mygreen,
+  backgroundcolor=background-color,
+  fontcolor=white,
   linewidth=2pt,
   topline=false,
   bottomline=false,
@@ -173,7 +176,8 @@
 % custom quotation environment
 \newmdenv[
   linecolor=mygreen,
-  backgroundcolor=background-color!20,
+  backgroundcolor=background-color!80,
+  fontcolor=white,
   linewidth=4pt,
   font=\smaller,
   topline=false,
@@ -456,10 +460,17 @@ We know the following about Ice Cube's day.
 \begin{tikzpicture}[baseline=(top.base), scale=.8]
     \Tree [.\node(top){DP}; [.D der ] [.NP [.AP [.A große ] ] [.N$''''$ [.AP^2 [.A^2 verschüchterte ] ] [.N$'''$ [.AP^3 [.A^3 fliegende ] ] [.N$''$ [.N$'$ [.N Wolf ] ] [.PP [.P aus ] [.NP^2 [.N^2 Twilight ] ] ] ] ] ] ] ]
 \end{tikzpicture}
+\end{frame}
 
+\begin{frame}{The Good Day Hypothesis}
+\protect\hypertarget{the-good-day-hypothesis-2}{}
 \begin{quotebox}
-    Colorless green ideas sleep furiously
+    Colorless green ideas sleep furiously\hfill (Noam Chomsky)
 \end{quotebox}
+
+\begin{rulebox}
+    \textbf{\color{mygreen} Functional Application (FA)}\hfill {\footnotesize H\&K:49}\\Wenn $\alpha$ ein verzweigender Knoten ist, \{$\beta$, $\gamma$\} die Menge von $\alpha$'s Töchtern ist und \sem{$\symbf{\beta}$} eine Funktion ist, dessen Domäne \sem{$\symbf{\gamma}$} enthält, dann \sem{$\symbf{\alpha}$} = \sem{$\symbf{\beta}$}(\sem{$\symbf{\gamma}$}).
+\end{rulebox}
 \end{frame}
 
 \begin{frame}{Semantics}
@@ -476,7 +487,7 @@ We know the following about Ice Cube's day.
 \end{frame}
 
 \begin{frame}{The Good Day Hypothesis}
-\protect\hypertarget{the-good-day-hypothesis-2}{}
+\protect\hypertarget{the-good-day-hypothesis-3}{}
 This leads to two different hypotheses:
 
 \begin{itemize}

@@ -182,6 +182,7 @@ $endfor$
 \definecolor{mygreen}{RGB}{159, 214, 223} % 0, 19, 108
 \definecolor{myred}{RGB}{252, 127, 178} %        96, 106, 179;
 \definecolor{background-color}{RGB}{40, 40, 40} % #48525c
+\definecolor{shadecolor}{RGB}{63, 63, 64}
 \newcommand*{\mygreen}[1]{\textcolor{mygreen}{\textbf{#1}}}
 \newcommand*{\myred}[1]{\textcolor{myred}{\textbf{#1}}}
 
@@ -225,6 +226,8 @@ $endfor$
 % custom rule environment
 \newmdenv[
   linecolor=mygreen,
+  backgroundcolor=background-color,
+  fontcolor=white,
   linewidth=2pt,
   topline=false,
   bottomline=false,
@@ -236,7 +239,8 @@ $endfor$
 % custom quotation environment
 \newmdenv[
   linecolor=mygreen,
-  backgroundcolor=background-color!20,
+  backgroundcolor=background-color!80,
+  fontcolor=white,
   linewidth=4pt,
   font=\smaller,
   topline=false,

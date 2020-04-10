@@ -147,9 +147,15 @@ We know the following about Ice Cube's day.
     \Tree [.\node(top){DP}; [.D der ] [.NP [.AP [.A große ] ] [.N$''''$ [.AP^2 [.A^2 verschüchterte ] ] [.N$'''$ [.AP^3 [.A^3 fliegende ] ] [.N$''$ [.N$'$ [.N Wolf ] ] [.PP [.P aus ] [.NP^2 [.N^2 Twilight ] ] ] ] ] ] ] ]
 \end{tikzpicture}
 
+### The Good Day Hypothesis
+
 \begin{quotebox}
-    Colorless green ideas sleep furiously
+    Colorless green ideas sleep furiously\hfill (Noam Chomsky)
 \end{quotebox}
+
+\begin{rulebox}
+    \textbf{\color{mygreen} Functional Application (FA)}\hfill {\footnotesize H\&K:49}\\Wenn $\alpha$ ein verzweigender Knoten ist, \{$\beta$, $\gamma$\} die Menge von $\alpha$'s Töchtern ist und \sem{$\symbf{\beta}$} eine Funktion ist, dessen Domäne \sem{$\symbf{\gamma}$} enthält, dann \sem{$\symbf{\alpha}$} = \sem{$\symbf{\beta}$}(\sem{$\symbf{\gamma}$}).
+\end{rulebox}
 
 ### Semantics
 
