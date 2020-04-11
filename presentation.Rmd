@@ -32,7 +32,7 @@ knitr::opts_chunk$set(cache=TRUE, echo = FALSE, warning = FALSE, message = FALSE
 knitr::opts_chunk$set(fig.path='figs/', fig.align = 'center', fig.asp = 0.6, 
     out.width = '90%', dev.args = list(bg = 'transparent'))
 knitr::opts_chunk$set(cache.path='cache/')
-knitr::opts_chunk$set(tidy = "styler", tidy.opts = list(scope = "indention"))
+knitr::opts_chunk$set(tidy = "styler", tidy.opts = list(scope = "tokens"))
 
 packages <- c("here", "tidyverse", "knitr", "kableExtra", "hrbrthemes")
 xfun::pkg_attach(packages, install = TRUE)
