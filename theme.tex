@@ -53,17 +53,11 @@ $endif$
 \usepackage{upquote}
 \usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath}
-$if(lang)$
-\ifxetex
-  \usepackage{polyglossia}
-  \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
-  $for(polyglossia-otherlangs)$
-  \setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
-  $endfor$
-\else
-  \usepackage[shorthands=off,$babel-lang$]{babel}
-\fi
-$endif$
+
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\setotherlanguage{ngerman}
+
 $if(biblatex)$
 \usepackage[
   backend=biber,
