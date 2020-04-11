@@ -242,16 +242,16 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
 %----------------------------------------
 \setbeamertemplate{title page}[empty]
 \setbeamertemplate{frametitle}{
-    \strut\insertframetitle\strut
+  \strut\insertframetitle\strut
 }
 \addtobeamertemplate{frametitle}{\vskip1ex}{}
 \setbeamertemplate{section page}
 {
-    \vskip-25ex
-    \begin{centering}
+  \vskip-25ex
+  \begin{centering}
     \usebeamerfont{section title}\insertsection\par
     \usebeamertemplate*{progress bar in section page}
-    \end{centering}
+  \end{centering}
 }
 \setbeamertemplate{frametitle continuation}[from second][cont'd]
 \setbeamertemplate{navigation symbols}{}
@@ -320,6 +320,16 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
 
 \AtBeginEnvironment{Shaded}{\smaller}
 \AtBeginEnvironment{verbatim}{\smaller}
+\definecolor{basiccolor}{rgb}{0.81,0.81,0.76}
+\surroundwithmdframed[
+  backgroundcolor=shadecolor,
+  fontcolor=basiccolor,
+  leftmargin=0,
+  rightmargin=0,
+  innerleftmargin=2pt,
+  innerrightmargin=2pt,
+  hidealllines
+  ]{verbatim}
 
 
 \usepackage[font=small,skip=0pt]{caption}

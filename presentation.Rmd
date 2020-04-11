@@ -8,7 +8,8 @@ github: https://mkthalmann.github.io/home/
 fontsize: 10pt
 output:
  beamer_presentation:
-    pandoc_args: "--highlight=breezedark"
+    pandoc_args: 
+        - "--highlight=breezedark"
     template: theme.tex
     citation_package: biblatex
     keep_tex: true
