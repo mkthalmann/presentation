@@ -20,7 +20,7 @@ make149: true
 mainfont: "Roboto Condensed"
 monofont: "Roboto Mono"
 sansfont: "Roboto Condensed"
-titlefont: "Roboto Slab Light"
+titlefont: "Canela"
 mathfont: "Asana Math"
 ---
 
