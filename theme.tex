@@ -104,21 +104,21 @@ $endif$
 
 % Comment these out if you don't want a slide with just the
 % part/section/subsection/subsubsection title:
-\AtBeginPart{
-  \let\insertpartnumber\relax
-  \let\partname\relax
-  \frame{\partpage}
-}
-\AtBeginSection{
-  \let\insertsectionnumber\relax
-  \let\sectionname\relax
-  \frame{\sectionpage}
-}
-\AtBeginSubsection{
-  \let\insertsubsectionnumber\relax
-  \let\subsectionname\relax
-  \frame{\subsectionpage}
-}
+% \AtBeginPart{
+%   \let\insertpartnumber\relax
+%   \let\partname\relax
+%   \frame{\partpage}
+% }
+% \AtBeginSection{
+%   \let\insertsectionnumber\relax
+%   \let\sectionname\relax
+%   \frame{\sectionpage}
+% }
+% \AtBeginSubsection{
+%   \let\insertsubsectionnumber\relax
+%   \let\subsectionname\relax
+%   \frame{\subsectionpage}
+% }
 
 $if(links-as-notes)$
 % Make links footnotes instead of hotlinks:
@@ -137,24 +137,6 @@ $if(numbersections)$
 $else$
 \setcounter{secnumdepth}{0}
 $endif$
-$if(dir)$
-\ifxetex
-  % load bidi as late as possible as it modifies e.g. graphicx
-  $if(latex-dir-rtl)$
-  \usepackage[RTLdocument]{bidi}
-  $else$
-  \usepackage{bidi}
-  $endif$
-\fi
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \TeXXeTstate=1
-  \newcommand{\RL}[1]{\beginR #1\endR}
-  \newcommand{\LR}[1]{\beginL #1\endL}
-  \newenvironment{RTL}{\beginR}{\endR}
-  \newenvironment{LTR}{\beginL}{\endL}
-\fi
-$endif$
-
 $if(title)$
 \title{$title$}
 $endif$
@@ -271,6 +253,7 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
     \usebeamertemplate*{progress bar in section page}
     \end{centering}
 }
+\setbeamertemplate{frametitle continuation}[from second][cont'd]
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{bibliography item}{}
 \setbeamertemplate{itemize item}{\color{white}$$\bullet$$}
@@ -336,6 +319,7 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
 \usepackage{etoolbox}
 
 \AtBeginEnvironment{Shaded}{\smaller}
+\AtBeginEnvironment{verbatim}{\smaller}
 
 
 \usepackage[font=small,skip=0pt]{caption}
@@ -351,8 +335,8 @@ $include-before$
 
 $endfor$
 $if(toc)$
-\begin{frame}
-  \tableofcontents[hideallsubsections]
+\begin{frame}{Outline}
+  \tableofcontents
 \end{frame}
 
 $endif$
@@ -369,6 +353,4 @@ $include-after$
 
 $endfor$
 
-\frame{\small \frametitle{Table of Contents}
-  \tableofcontents}
 \end{document}
