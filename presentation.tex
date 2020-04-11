@@ -80,27 +80,26 @@
 
 % Comment these out if you don't want a slide with just the
 % part/section/subsection/subsubsection title:
-\AtBeginPart{
-  \let\insertpartnumber\relax
-  \let\partname\relax
-  \frame{\partpage}
-}
-\AtBeginSection{
-  \let\insertsectionnumber\relax
-  \let\sectionname\relax
-  \frame{\sectionpage}
-}
-\AtBeginSubsection{
-  \let\insertsubsectionnumber\relax
-  \let\subsectionname\relax
-  \frame{\subsectionpage}
-}
+% \AtBeginPart{
+%   \let\insertpartnumber\relax
+%   \let\partname\relax
+%   \frame{\partpage}
+% }
+% \AtBeginSection{
+%   \let\insertsectionnumber\relax
+%   \let\sectionname\relax
+%   \frame{\sectionpage}
+% }
+% \AtBeginSubsection{
+%   \let\insertsubsectionnumber\relax
+%   \let\subsectionname\relax
+%   \frame{\subsectionpage}
+% }
 
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
-
 \title{An Example R Markdown Document}
 \subtitle{(A Subtitle Would Go Here if This Were a Class)}
 \author{Maik Thalmann}
@@ -208,6 +207,7 @@
     \usebeamertemplate*{progress bar in section page}
     \end{centering}
 }
+\setbeamertemplate{frametitle continuation}[from second][cont'd]
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{bibliography item}{}
 \setbeamertemplate{itemize item}{\color{white}$\bullet$}
@@ -273,6 +273,7 @@
 \usepackage{etoolbox}
 
 \AtBeginEnvironment{Shaded}{\smaller}
+\AtBeginEnvironment{verbatim}{\smaller}
 
 
 \usepackage[font=small,skip=0pt]{caption}
@@ -280,6 +281,10 @@
 
 \begin{document}
 \frame{\titlepage}
+
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
 
 \hypertarget{pop-songs-and-political-science}{%
 \section{Pop Songs and Political
@@ -302,23 +307,24 @@ Sheena Easton describes the following scenario for her baby:
 \end{enumerate}
 \end{frame}
 
-\begin{frame}[fragile]{R Stuff}
+\begin{frame}[fragile,allowframebreaks]{R Stuff}
 \protect\hypertarget{r-stuff}{}
 \begin{verbatim}
-## # A tibble: 6 x 10
-##   carat cut       color clarity depth table price     x     y     z
-##   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
-## 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
-## 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
-## 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
-## 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
-## 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
-## 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+# A tibble: 10 x 10
+   carat cut       color clarity depth table price     x     y     z
+   <dbl> <ord>     <ord> <ord>   <dbl> <dbl> <int> <dbl> <dbl> <dbl>
+ 1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+ 2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+ 3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+ 4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+ 5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+ 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+ 7 0.24  Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
+ 8 0.26  Very Good H     SI1      61.9    55   337  4.07  4.11  2.53
+ 9 0.22  Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
+10 0.23  Very Good H     VS1      59.4    61   338  4     4.05  2.39
 \end{verbatim}
-\end{frame}
 
-\begin{frame}[fragile]{R Stuff}
-\protect\hypertarget{r-stuff-1}{}
 Some text to compare font sizes on this slide.
 
 \begin{Shaded}
@@ -483,11 +489,31 @@ This leads to two different hypotheses:
 These hypotheses are tested using archival data of Ice Cube's life.
 \end{frame}
 
+\hypertarget{all-code}{%
+\section*{All Code}\label{all-code}}
+
+\hypertarget{all-the-code-i-used}{%
+\subsection*{All The Code I Used}\label{all-the-code-i-used}}
+
+\begin{frame}[fragile,allowframebreaks]{All The Code I Used}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d \textless{}{-}}\StringTok{ }\NormalTok{diamonds}
+\KeywordTok{head}\NormalTok{(diamonds, }\DecValTok{10}\NormalTok{)}
+\KeywordTok{library}\NormalTok{(psych)}
+\NormalTok{desc \textless{}{-}}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{describeBy}\NormalTok{(d}\OperatorTok{$}\NormalTok{price, d}\OperatorTok{$}\NormalTok{color, }\DataTypeTok{mat =}\NormalTok{ T, }\DataTypeTok{digits =} \DecValTok{2}\NormalTok{))}
+\KeywordTok{kable}\NormalTok{(desc, }\DataTypeTok{booktabs =}\NormalTok{ T) }\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{kable\_styling}\NormalTok{(}\DataTypeTok{latex\_options =} \StringTok{"scale\_down"}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(d, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ carat, }\DataTypeTok{y =}\NormalTok{ price)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{stat\_summary}\NormalTok{(}\DataTypeTok{fun.y =}\NormalTok{ mean, }\DataTypeTok{geom =} \StringTok{"line"}\NormalTok{, }\DataTypeTok{color =}\NormalTok{ mygreen) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme\_maik}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
 \begin{frame}[allowframebreaks]{}
   \printbibliography[heading=none]
 \end{frame}
 
 
-\frame{\small \frametitle{Table of Contents}
-  \tableofcontents}
 \end{document}

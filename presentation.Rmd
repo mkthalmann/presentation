@@ -12,6 +12,7 @@ output:
     template: theme.tex
     citation_package: biblatex
     keep_tex: true
+    toc: true
     latex_engine: xelatex
     dev: cairo_pdf
     slide_level: 3
@@ -25,16 +26,15 @@ mathfont: "Asana Math"
 ---
 
 ```{r setup, include=FALSE, cache=F, message=F, warning=F, results="hide"}
-knitr::opts_chunk$set(cache=TRUE, echo = FALSE, warning = FALSE, message = FALSE)
+options(scipen = 999)
+knitr::opts_chunk$set(cache=TRUE, echo = FALSE, warning = FALSE, message = FALSE, comment=NA)
 knitr::opts_chunk$set(fig.path='figs/', fig.align = 'center', fig.asp = 0.6, 
     out.width = '90%', dev.args = list(bg = 'transparent'))
 knitr::opts_chunk$set(cache.path='cache/')
 knitr::opts_chunk$set(tidy = "styler", tidy.opts = list(scope = "indention"))
-library(here)
-library(tidyverse)
-library(knitr)
-library(kableExtra)
-library(hrbrthemes)
+
+packages <- c("here", "tidyverse", "knitr", "kableExtra", "hrbrthemes")
+xfun::pkg_attach(packages, install = TRUE)
 
 mygreen <- "#9fd6df"
 myred <- "#fc7fb2"
@@ -73,14 +73,12 @@ Sheena Easton describes the following scenario for her baby:
 3. Takes another train home again
 4. Finds Sheena Easton waiting for him
 
-### R Stuff
+### R Stuff {.allowframebreaks}
 
 ```{r}
 d <- diamonds
-head(diamonds)
+head(diamonds, 10)
 ```
-
-### R Stuff
 
 Some text to compare font sizes on this slide.
 
@@ -177,3 +175,15 @@ This leads to two different hypotheses:
 - $H_1$: Ice Cube is having a good (i.e. greater than average) day.
 
 These hypotheses are tested using archival data of Ice Cube's life.
+
+# All Code {.unlisted .unnumbered}
+
+## All The Code I Used {.unlisted .unnumbered .allowframebreaks}
+
+```{r get-labels, echo = FALSE}
+labs = knitr::all_labels()
+labs = setdiff(labs, c("setup", "get-labels"))
+```
+
+```{r all-code, ref.label=labs, eval = FALSE, echo = TRUE}
+```
