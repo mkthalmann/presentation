@@ -250,23 +250,28 @@ $endfor$
   innerleftmargin=5pt
 ]{quotebox}
 
-
-% Get rid of navigation symbols.
-%-------------------------------
-\setbeamertemplate{navigation symbols}{}
-
 % Optional institute tags and titlegraphic.
 % Do feel free to change the titlegraphic if you don't want it as a Markdown field.
 %----------------------------------------------------------------------------------
 $if(institute)$\institute{$institute$}$endif$
-
-% \titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~/Dropbox/teaching/clemson-academic.png}} % <-- if you want to know what this looks like without it as a Markdown field. 
-% -----------------------------------------------------------------------------------------------------
 $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$titlegraphic$}}$endif$
 
 % Some beamer adjustments
 %----------------------------------------
 \setbeamertemplate{title page}[empty]
+\setbeamertemplate{frametitle}{
+    \strut\insertframetitle\strut
+}
+\addtobeamertemplate{frametitle}{\vskip1ex}{}
+\setbeamertemplate{section page}
+{
+    \vskip-25ex
+    \begin{centering}
+    \usebeamerfont{section title}\insertsection\par
+    \usebeamertemplate*{progress bar in section page}
+    \end{centering}
+}
+\setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{bibliography item}{}
 \setbeamertemplate{itemize item}{\color{white}$$\bullet$$}
 \setbeamertemplate{itemize subitem}{\color{white}\scriptsize{$$\bullet$$}}
@@ -290,12 +295,13 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
 \setbeamercolor{bibliography entry title}{fg=white}
 \setbeamercolor{bibliography entry note}{fg=white}
 \setbeamercolor{bibliography entry item}{fg=white}
-\setbeamerfont{frametitle}{size=\LARGE}
+\setbeamerfont{title}{family=\fontspec{$if(titlefont)$$titlefont$$else$serif$endif$}, size=\huge}
+\setbeamerfont{section title}{family=\fontspec{$if(titlefont)$$titlefont$$else$serif$endif$}, size=\huge}
+\setbeamerfont{subtitle}{family=\fontspec{$if(titlefont)$$titlefont$$else$serif$endif$}}
+\setbeamerfont{frametitle}{family=\fontspec{$if(titlefont)$$titlefont$$else$serif$endif$}, size=\LARGE}
 
 % Sections and subsections should not get their own damn slide.
 %--------------------------------------------------------------
-% \AtBeginPart{}
-% \AtBeginSection{}
 \AtBeginSubsection{}
 \AtBeginSubsubsection{}
 
@@ -304,9 +310,7 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
 \setlength{\emergencystretch}{0em}  % prevent overfull lines
 \setlength{\parskip}{0pt}
 
-
-% Allow for those simple two-tone footlines I like. 
-% Edit the colors as you see fit.
+% two-tone footlines
 %--------------------------------------------------
 \defbeamertemplate*{footline}{my footline}{%
   \ifnum\insertpagenumber=1
@@ -322,43 +326,20 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
       \vspace*{1pt}%
       \insertframenumber/\inserttotalframenumber \hspace*{0.1cm}%
       \newline%
-      \color{mygreen}{\rule{\paperwidth}{0.4mm}}\newline%
+      \color{mygreen}{\rule{\paperwidth}{0.3mm}}\newline%
       \color{myred}{\rule{\paperwidth}{.4mm}}%
     }%
   \fi%
 }
 
 \usepackage{gb4e}
-
-% Automatically center images
-% ---------------------------
-% Note: this is for ![](image.png) images
-% Use "fig.align = "center" for R chunks
 \usepackage{etoolbox}
-
-\AtBeginDocument{%
-  \letcs\oig{@orig\string\includegraphics}%
-  \renewcommand<>\includegraphics[2][]{%
-    \only#3{%
-      {\centering\oig[{#1}]{#2}\par}%
-    }%
-  }%
-}
 
 \AtBeginEnvironment{Shaded}{\smaller}
 
-% I think I've moved to xelatex now. Here's some stuff for that.
-% --------------------------------------------------------------
-% I could customize/generalize this more but the truth is it works for my circumstances.
 
-\ifxetex
-  \setbeamerfont{title}{family=\fontspec{$if(titlefont)$$titlefont$$else$serif$endif$}}
-  \setbeamerfont{frametitle}{family=\fontspec{$if(titlefont)$$titlefont$$else$serif$endif$}}
-  \usepackage[font=small,skip=0pt]{caption}
-\else
-\fi
+\usepackage[font=small,skip=0pt]{caption}
 
-% Okay, and begin the actual document...
 
 \begin{document}
 $if(title)$
