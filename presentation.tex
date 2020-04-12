@@ -32,6 +32,7 @@
 \usepackage{polyglossia}
 \setmainlanguage{english}
 \setotherlanguage{ngerman}
+\usepackage{csquotes}
 
 \usepackage[
   backend=biber,
@@ -104,7 +105,7 @@
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
+\setcounter{secnumdepth}{0}
 \title{An Example R Markdown Document}
 \subtitle{(A Subtitle Would Go Here if This Were a Class)}
 \author{Maik Thalmann}
@@ -373,7 +374,7 @@ X17 & 7 & J & 1 & 2808 & 5323.82 & 4438.19 & 4234.0 & 4721.87 & 4088.27 & 335 & 
 
 \begin{frame}{Plot}
 \protect\hypertarget{plot}{}
-\begin{center}\includegraphics[width=0.9\linewidth]{figs/unnamed-chunk-3-1} \end{center}
+\begin{center}\includegraphics[width=0.9\linewidth]{figs/unnamed-chunk-4-1} \end{center}
 \end{frame}
 
 \begin{frame}{Rick Astley's Re-election Platform}
@@ -513,6 +514,9 @@ These hypotheses are tested using archival data of Ice Cube's life.
 \begin{frame}[fragile,allowframebreaks]{All The Code I Used}
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# read chunk (does not run code)}
+\KeywordTok{library}\NormalTok{(knitr)}
+\KeywordTok{read\_chunk}\NormalTok{(}\StringTok{"setup.R"}\NormalTok{)}
 \NormalTok{d \textless{}{-}}\StringTok{ }\NormalTok{diamonds}
 \KeywordTok{head}\NormalTok{(diamonds, }\DecValTok{10}\NormalTok{)}
 \KeywordTok{library}\NormalTok{(psych)}
