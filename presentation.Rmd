@@ -9,7 +9,7 @@ fontsize: 10pt
 output:
  beamer_presentation:
     pandoc_args: 
-        - "--highlight=breezedark"
+        - "--highlight=tango"  # breezedark for darkmode; tango for lightmode
     template: theme.tex
     citation_package: biblatex
     keep_tex: true
@@ -19,6 +19,7 @@ output:
     slide_level: 3
 bibliography: ../bibliographyuni.bib
 make149: true
+darkmode: false
 mainfont: "Roboto Condensed"
 monofont: "Roboto Mono"
 sansfont: "Roboto Condensed"
@@ -28,6 +29,7 @@ mathfont: "Asana Math"
 
 ```{r import, echo=FALSE, warning=FALSE, message=FALSE}
 # read chunk (does not run code)
+darkmode <- FALSE
 library(knitr)
 read_chunk('setup.R')
 ```
