@@ -115,6 +115,7 @@
 %%--------------------------
 
 \usepackage{ltablex}
+\usepackage{threeparttablex}
 \usepackage{booktabs}
 \renewcommand{\arraystretch}{1.03}
 \newcolumntype{L}{>{\scriptsize}l}
@@ -289,7 +290,10 @@
   rightmargin=0,
   innerleftmargin=2pt,
   innerrightmargin=2pt,
-  hidealllines
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  leftline=false
   ]{verbatim}
 
 
@@ -521,24 +525,22 @@ These hypotheses are tested using archival data of Ice Cube's life.
   \(p < .001\), \(\hat{\eta}^2_G = .002\)
 \end{enumerate}
 
-(\#tab:aovtable)
-
-**
-
-\begin{longtable}[]{@{}lllllll@{}}
+\begin{table}[tbp]
+\begin{center}
+\begin{threeparttable}
+\caption{\label{tab:unnamed-chunk-4}Test Table}
+\begin{tabular}{lllllll}
 \toprule
-Effect & \(F\) & \(\mathit{df}_1\) & \(\mathit{df}_2\) &
-\(\mathit{MSE}\) & \(p\) & \(\hat{\eta}^2_G\)\tabularnewline
+Effect & \multicolumn{1}{c}{$F$} & \multicolumn{1}{c}{$\mathit{df}_1$} & \multicolumn{1}{c}{$\mathit{df}_2$} & \multicolumn{1}{c}{$\mathit{MSE}$} & \multicolumn{1}{c}{$p$} & \multicolumn{1}{c}{$\hat{\eta}^2_G$}\\
 \midrule
-\endhead
-Color & 103.61 & 6 & 53905 & 15,216,972.28 & \textless{} .001 &
-.011\tabularnewline
-Cut & 144.40 & 4 & 53905 & 15,216,972.28 & \textless{} .001 &
-.011\tabularnewline
-Color \(\times\) Cut & 4.53 & 24 & 53905 & 15,216,972.28 & \textless{}
-.001 & .002\tabularnewline
+Color & 103.61 & 6 & 53905 & 15,216,972.28 & < .001 & .011\\
+Cut & 144.40 & 4 & 53905 & 15,216,972.28 & < .001 & .011\\
+Color $\times$ Cut & 4.53 & 24 & 53905 & 15,216,972.28 & < .001 & .002\\
 \bottomrule
-\end{longtable}
+\end{tabular}
+\end{threeparttable}
+\end{center}
+\end{table}
 \end{frame}
 
 \hypertarget{all-code}{%
@@ -562,10 +564,6 @@ Color \(\times\) Cut & 4.53 & 24 & 53905 & 15,216,972.28 & \textless{}
 \NormalTok{diamonds}\OperatorTok{$}\NormalTok{id \textless{}{-}}\StringTok{ }\DecValTok{1}\OperatorTok{:}\KeywordTok{length}\NormalTok{(diamonds}\OperatorTok{$}\NormalTok{carat)}
 
 \NormalTok{fit \textless{}{-}}\StringTok{ }\KeywordTok{aov\_ez}\NormalTok{(}\StringTok{"id"}\NormalTok{, }\StringTok{"price"}\NormalTok{, }\DataTypeTok{between =} \KeywordTok{c}\NormalTok{(}\StringTok{"color"}\NormalTok{, }\StringTok{"cut"}\NormalTok{), }\DataTypeTok{data =}\NormalTok{ diamonds)}
-\KeywordTok{apa\_table}\NormalTok{(}
-  \KeywordTok{apa\_print}\NormalTok{(fit)}\OperatorTok{$}\NormalTok{table,}
-  \DataTypeTok{escape =} \OtherTok{FALSE}
-\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 \end{frame}

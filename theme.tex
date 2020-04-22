@@ -150,6 +150,7 @@ $endfor$
 %%--------------------------
 
 \usepackage{ltablex}
+\usepackage{threeparttablex}
 \usepackage{booktabs}
 \renewcommand{\arraystretch}{1.03}
 \newcolumntype{L}{>{\scriptsize}l}
@@ -333,7 +334,10 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
   rightmargin=0,
   innerleftmargin=2pt,
   innerrightmargin=2pt,
-  hidealllines
+  topline=false,
+  bottomline=false,
+  rightline=false,
+  leftline=false
   ]{verbatim}
 
 

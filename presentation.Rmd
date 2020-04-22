@@ -163,11 +163,12 @@ fit <- aov_ez("id", "price", between = c("color", "cut"), data = diamonds)
 1. Cut: `r apa_print(fit)$full_result$cut`
 1. Color:Cut: `r apa_print(fit)$full_result$color_cut`
 
-```{r aovtable, results="asis"}
+```{r results='asis'}
 apa_table(
     apa_print(fit)$table,
-    escape = FALSE
-)
+    format="latex",
+    caption="Test Table"
+    )
 ```
 
 # All Code {.unlisted .unnumbered}
