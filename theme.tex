@@ -156,10 +156,21 @@ $endfor$
 
 % colors
 \usepackage{tikz}
-\definecolor{mygreen}{RGB}{159, 214, 223} % 0, 19, 108
-\definecolor{myred}{RGB}{252, 127, 178} %        96, 106, 179;
-\definecolor{background-color}{RGB}{40, 40, 40} % #48525c
+$if(darkmode)$
+\definecolor{mygreen}{RGB}{159, 214, 223} 
+\definecolor{myred}{RGB}{252, 127, 178} 
+\definecolor{background-color}{RGB}{40, 40, 40} 
 \definecolor{shadecolor}{RGB}{63, 63, 64}
+\definecolor{customtextcolor}{RGB}{255, 255, 255}
+\definecolor{basiccolor}{rgb}{0.81,0.81,0.76}
+$else$
+\definecolor{mygreen}{RGB}{120, 161, 187}   %  #78a1bb
+\definecolor{myred}{RGB}{216, 0, 50}        %  #D80032
+\definecolor{background-color}{RGB}{255, 255, 255} % #48525c
+\definecolor{shadecolor}{RGB}{232, 232, 232}
+\definecolor{customtextcolor}{RGB}{0, 0, 0}
+\definecolor{basiccolor}{rgb}{0.13,0.29,0.53} % used for verbatim text
+$endif$
 \newcommand*{\mygreen}[1]{\textcolor{mygreen}{\textbf{#1}}}
 \newcommand*{\myred}[1]{\textcolor{myred}{\textbf{#1}}}
 
@@ -168,9 +179,9 @@ $endfor$
 \def\mysize{\footnotesize}
 \usetikzlibrary{decorations.text,backgrounds,arrows.meta,decorations.pathreplacing,calc, fit, shapes,positioning,intersections,decorations.markings}
 \tikzset{
-  font=\color{white},
+  font=\color{customtextcolor},
   every tree node/.style={align=center,anchor=base},
-  edge from parent/.append style={ultra thin, white}}
+  edge from parent/.append style={ultra thin, customtextcolor}}
 \tikzset{semtree/.style={
       level distance=2em,
       every tree node/.style={font=\bfseries}}
@@ -204,8 +215,8 @@ $endfor$
 \newmdenv[
   linecolor=mygreen,
   backgroundcolor=background-color,
-  fontcolor=white,
-  linewidth=2pt,
+  fontcolor=customtextcolor,
+  linewidth=4pt,
   topline=false,
   bottomline=false,
   rightmargin=0,
@@ -217,7 +228,7 @@ $endfor$
 \newmdenv[
   linecolor=mygreen,
   backgroundcolor=background-color!80,
-  fontcolor=white,
+  fontcolor=customtextcolor,
   linewidth=4pt,
   font=\smaller,
   topline=false,
@@ -251,28 +262,28 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
 \setbeamertemplate{frametitle continuation}[from second][cont'd]
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{bibliography item}{}
-\setbeamertemplate{itemize item}{\color{white}$$\bullet$$}
-\setbeamertemplate{itemize subitem}{\color{white}\scriptsize{$$\bullet$$}}
+\setbeamertemplate{itemize item}{\color{customtextcolor}$$\bullet$$}
+\setbeamertemplate{itemize subitem}{\color{customtextcolor}\scriptsize{$$\bullet$$}}
 \setbeamertemplate{itemize/enumerate body end}{\vspace{.6\baselineskip}}
 \setbeamercovered{transparent}
 \setbeamercolor{background canvas}{bg=background-color}
 \setbeamercolor{frametitle}{fg=mygreen, bg=background-color}
-\setbeamercolor{title}{fg=white}
-\setbeamercolor{normal text}{fg=white}
+\setbeamercolor{title}{fg=customtextcolor}
+\setbeamercolor{normal text}{fg=customtextcolor}
 \setbeamercolor{alerted text}{fg=myred}
-\setbeamercolor{local structure}{fg=white}
+\setbeamercolor{local structure}{fg=customtextcolor}
 \setbeamercolor{section in toc}{fg=mygreen}
-\setbeamercolor{structure}{fg=white}
+\setbeamercolor{structure}{fg=customtextcolor}
 \setbeamercolor{local structure}{parent=structure}
-\setbeamercolor{item projected}{parent=item,use=item,fg=white}
+\setbeamercolor{item projected}{parent=item,use=item,fg=customtextcolor}
 \setbeamercolor{enumerate item}{parent=item}
 \setbeamercolor{footline}{fg=mygreen}
-\setbeamercolor{block title}{fg=myred,bg=white}
-\setbeamercolor{bibliography entry author}{fg=white}
-\setbeamercolor{bibliography entry location}{fg=white}
-\setbeamercolor{bibliography entry title}{fg=white}
-\setbeamercolor{bibliography entry note}{fg=white}
-\setbeamercolor{bibliography entry item}{fg=white}
+\setbeamercolor{block title}{fg=myred,bg=customtextcolor}
+\setbeamercolor{bibliography entry author}{fg=customtextcolor}
+\setbeamercolor{bibliography entry location}{fg=customtextcolor}
+\setbeamercolor{bibliography entry title}{fg=customtextcolor}
+\setbeamercolor{bibliography entry note}{fg=customtextcolor}
+\setbeamercolor{bibliography entry item}{fg=customtextcolor}
 \setbeamerfont{title}{family=\fontspec{$if(titlefont)$$titlefont$$else$serif$endif$}, size=\huge}
 \setbeamerfont{section title}{family=\fontspec{$if(titlefont)$$titlefont$$else$serif$endif$}, size=\huge}
 \setbeamerfont{subtitle}{family=\fontspec{$if(titlefont)$$titlefont$$else$serif$endif$}}
@@ -315,7 +326,6 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
 
 \AtBeginEnvironment{Shaded}{\smaller}
 \AtBeginEnvironment{verbatim}{\smaller}
-\definecolor{basiccolor}{rgb}{0.81,0.81,0.76}
 \surroundwithmdframed[
   backgroundcolor=shadecolor,
   fontcolor=basiccolor,

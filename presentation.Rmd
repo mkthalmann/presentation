@@ -149,6 +149,25 @@ This leads to two different hypotheses:
 
 These hypotheses are tested using archival data of Ice Cube's life.
 
+### Stats
+
+```{r stats}
+diamonds$id <- 1:length(diamonds$carat)
+
+fit <- aov_ez("id", "price", between = c("color", "cut"), data = diamonds)
+```
+
+1. Color: `r apa_print(fit)$full_result$color`
+1. Cut: `r apa_print(fit)$full_result$cut`
+1. Color:Cut: `r apa_print(fit)$full_result$color_cut`
+
+```{r aovtable, results="asis"}
+apa_table(
+    apa_print(fit)$table,
+    escape = FALSE
+)
+```
+
 # All Code {.unlisted .unnumbered}
 
 ## All The Code I Used {.unlisted .unnumbered .allowframebreaks}
