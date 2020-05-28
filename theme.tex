@@ -187,6 +187,9 @@ $endif$
       level distance=2em,
       every tree node/.style={font=\bfseries}}
 }
+\tikzset{exarrows/.style={semithick,
+		arrows={-Stealth[scale=1, scale length=1,
+			scale width=1]}}}
 
 \usepackage{rotating}
 \usepackage{hyperref}
@@ -260,6 +263,7 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
     \usebeamertemplate*{progress bar in section page}
   \end{centering}
 }
+\setbeamertemplate{section in toc}[sections numbered]
 \setbeamertemplate{frametitle continuation}[from second][cont'd]
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{bibliography item}{}
@@ -269,7 +273,7 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
 \setbeamercovered{transparent}
 \setbeamercolor{background canvas}{bg=background-color}
 \setbeamercolor{frametitle}{fg=mygreen, bg=background-color}
-\setbeamercolor{title}{fg=customtextcolor}
+\setbeamercolor{title}{fg=mygreen}
 \setbeamercolor{normal text}{fg=customtextcolor}
 \setbeamercolor{alerted text}{fg=myred}
 \setbeamercolor{local structure}{fg=customtextcolor}
@@ -286,11 +290,13 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
 \setbeamercolor{bibliography entry note}{fg=customtextcolor}
 \setbeamercolor{bibliography entry item}{fg=customtextcolor}
 \setbeamerfont{title}{family=\fontspec{$if(titlefont)$$titlefont$$else$serif$endif$}, size=\huge}
-\setbeamerfont{section title}{family=\fontspec{$if(titlefont)$$titlefont$$else$serif$endif$}, size=\huge}
 \setbeamerfont{subtitle}{family=\fontspec{$if(titlefont)$$titlefont$$else$serif$endif$}}
+\setbeamerfont{section title}{family=\fontspec{$if(titlefont)$$titlefont$$else$serif$endif$}, size=\huge}
 \setbeamerfont{frametitle}{family=\fontspec{$if(titlefont)$$titlefont$$else$serif$endif$}, size=\LARGE}
 
-% Sections and subsections should not get their own damn slide.
+\setcounter{tocdepth}{1}
+
+% Subsections and subsubsections should not get their own damn slide.
 %--------------------------------------------------------------
 \AtBeginSubsection{}
 \AtBeginSubsubsection{}
@@ -322,6 +328,8 @@ $if(titlegraphic)$\titlegraphic{\includegraphics[width=0.3\paperwidth]{\string~$
   \fi%
 }
 
+\usepackage{pifont}
+\usepackage{multicol}
 \usepackage{gb4e}
 \usepackage{etoolbox}
 
