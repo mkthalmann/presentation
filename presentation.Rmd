@@ -9,7 +9,7 @@ fontsize: 10pt
 output:
  beamer_presentation:
     pandoc_args: 
-        - "--highlight=tango"  # breezedark for darkmode; tango for lightmode
+        - "--highlight=breezedark"  # breezedark for darkmode; tango for lightmode
     template: theme.tex
     citation_package: biblatex
     keep_tex: true
@@ -19,7 +19,7 @@ output:
     slide_level: 3
 bibliography: ../bibliographyuni.bib
 make149: true
-darkmode: false
+darkmode: true
 mainfont: "Roboto Condensed"
 monofont: "Roboto Mono"
 sansfont: "Roboto Condensed"
@@ -29,9 +29,9 @@ mathfont: "Asana Math"
 
 ```{r import, echo=FALSE, warning=FALSE, message=FALSE}
 # read chunk (does not run code)
-darkmode <- FALSE
+darkmode <- TRUE
 library(knitr)
-read_chunk('setup.R')
+read_chunk("setup.R")
 ```
 
 ```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
@@ -68,8 +68,7 @@ kable(desc, booktabs = T) %>%
 
 ```{r}
 ggplot(d, aes(x = carat, y = price)) +
-    stat_summary(fun.y = mean, geom = "line", color = mygreen) +
-    theme_maik()
+    stat_summary(fun = mean, geom = "line", color = mygreen)
 ```
 
 ### Rick Astley's Re-election Platform
@@ -166,9 +165,9 @@ fit <- aov_ez("id", "price", between = c("color", "cut"), data = diamonds)
 ```{r results='asis'}
 apa_table(
     apa_print(fit)$table,
-    format="latex",
-    caption="Test Table"
-    )
+    format = "latex",
+    caption = "Test Table"
+)
 ```
 
 # All Code {.unlisted .unnumbered}
@@ -176,8 +175,8 @@ apa_table(
 ## All The Code I Used {.unlisted .unnumbered .allowframebreaks}
 
 ```{r get-labels, echo = FALSE}
-labs = knitr::all_labels()
-labs = setdiff(labs, c("import", "setup", "get-labels"))
+labs <- knitr::all_labels()
+labs <- setdiff(labs, c("import", "setup", "get-labels"))
 ```
 
 ```{r all-code, ref.label=labs, eval = FALSE, echo = TRUE}
